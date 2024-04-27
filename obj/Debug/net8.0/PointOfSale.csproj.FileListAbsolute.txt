@@ -254,3 +254,4 @@
 /Users/johncarloadvincula/Documents/Projects/C#/PointOfSale/bin/Debug/net8.0/Microsoft.Extensions.Identity.Core.dll
 /Users/johncarloadvincula/Documents/Projects/C#/PointOfSale/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
 /Users/johncarloadvincula/Documents/Projects/C#/PointOfSale/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/Users/johncarloadvincula/Documents/Projects/C#/PointOfSale/obj/Debug/net8.0/PointOfSale.sourcelink.json
