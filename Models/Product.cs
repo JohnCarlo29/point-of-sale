@@ -18,6 +18,14 @@ namespace PointOfSale.Models
         [StringLength(100)]
         public required string Name { get; set; }
 
-        public required ProductCategory ProductCategory { get; set; }
+        [Required]
+        [RegularExpression(@"^\$?\d+(\.(\d{2}))?$")]
+        public required decimal Price { get; set; }
+
+        [Required]
+        [IntegerValidator]
+        public required int Stock { get; set; }
+
+        public ProductCategory? ProductCategory { get; set; }
     }
 }

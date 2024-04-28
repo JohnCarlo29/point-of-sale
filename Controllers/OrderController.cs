@@ -37,7 +37,8 @@ namespace PointOfSale.Controllers
                 {
                     ProductId = item.ProductId,
                     Quantity = item.Quantity,
-                    Price = item.Price,
+                    AvailedPrice = item.Price,
+                    TotalPrice = item.Price * item.Quantity,
                     OrderId = order.Id // Assuming OrderId is a foreign key in the OrderItem entity
                 };
                 await _appDbContext.OrderItems.AddAsync(orderItem);

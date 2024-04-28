@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "A5pSypNaG28fOoujuxmRZi0IYP2zAJDOYWayjxHegnR4/tZwDVGN9Jar9Ko3yrzu3iWrB2vOWI41FobzrW0MIQ==",
+  "dgSpecHash": "Av2erMFXtAtLCXpegeyxUCBP6ii7CsT8qzl+pqJItXP8BxOa7i8REL8QxtmIcSsWlcOD3sHBrSsT3HYl2zCRvw==",
   "success": true,
   "projectFilePath": "/Users/johncarloadvincula/Documents/Projects/C#/PointOfSale/PointOfSale.csproj",
   "expectedPackageFiles": [
     "/Users/johncarloadvincula/.nuget/packages/entityframework/6.4.4/entityframework.6.4.4.nupkg.sha512",
+    "/Users/johncarloadvincula/.nuget/packages/fluentvalidation/11.9.1/fluentvalidation.11.9.1.nupkg.sha512",
+    "/Users/johncarloadvincula/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "/Users/johncarloadvincula/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.9.1/fluentvalidation.dependencyinjectionextensions.11.9.1.nupkg.sha512",
     "/Users/johncarloadvincula/.nuget/packages/humanizer/2.14.1/humanizer.2.14.1.nupkg.sha512",
     "/Users/johncarloadvincula/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/johncarloadvincula/.nuget/packages/humanizer.core.af/2.14.1/humanizer.core.af.2.14.1.nupkg.sha512",

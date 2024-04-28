@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using PointOfSale.Data;
 using PointOfSale.DataTransferObjects;
 using PointOfSale.Models;
+using PointOfSale.Request;
 
 namespace PointOfSale.Controllers
 {
@@ -47,11 +48,21 @@ namespace PointOfSale.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Store(Product product)
+        public async Task<IActionResult> Store(StoreProductRequest request)
         {
-            await _appDbContext.Products.AddAsync(product);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _appDbContext.Products.AddAsync(new Product{
+                Name = request.Name,
+                Price = request.Price,
+                Stock = request.Stock,
+                ProductCategoryId = request.ProductCategoryId
+            });
             await _appDbContext.SaveChangesAsync();
-            return Ok(product);
+            return Ok("success");
         }
 
         [HttpPut("{id}")]
