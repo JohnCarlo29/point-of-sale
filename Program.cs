@@ -52,7 +52,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     )
 );
 
-builder.Services.AddIdentityCore<IdentityUser>()
+builder.Services.AddIdentityCore<IdentityUser<int>>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddApiEndpoints();
 
@@ -70,7 +70,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapGroup("/api").MapIdentityApi<IdentityUser>();
+app.MapGroup("/api").MapIdentityApi<IdentityUser<int>>();
 
 app.UseHttpsRedirection();
 

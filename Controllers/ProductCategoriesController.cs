@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PointOfSale.Data;
@@ -17,14 +19,17 @@ namespace PointOfSale.Controllers
             _appDbContext = appDbContext;
         }
 
-       [HttpGet]
+        [HttpGet]
+        [Authorize]    
         public async Task<IActionResult> Index()
         {
+
             var productCategories = await _appDbContext.ProductCategories.ToListAsync();
             return Ok(productCategories);
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> Show(int id)
         {
             var ProductCategories = await _appDbContext.ProductCategories.FindAsync(id);
@@ -32,6 +37,7 @@ namespace PointOfSale.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Store(ProductCategory productCategory)
         {
             await _appDbContext.ProductCategories.AddAsync(productCategory);

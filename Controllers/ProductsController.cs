@@ -19,8 +19,8 @@ namespace PointOfSale.Controllers
             _appDbContext = appDbContext;
         }
 
-        [Authorize]
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Index([FromQuery]ProductFilterData? productFilterData)
         {
             IQueryable<Product> products = _appDbContext.Products.Include(p => p.ProductCategory);
@@ -39,6 +39,7 @@ namespace PointOfSale.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> Show(int id)
         {
             var product = await _appDbContext.Products.FindAsync(id);
@@ -54,6 +55,7 @@ namespace PointOfSale.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> Update(int id, Product product)
         {
             product.Id = id;
@@ -63,6 +65,7 @@ namespace PointOfSale.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> Destroy(int id)
         {
             var product = await _appDbContext.Products.FindAsync(id);
