@@ -1,3 +1,5 @@
+using FluentValidation;
+
 namespace PointOfSale.Request
 {
     public class StoreProductRequest

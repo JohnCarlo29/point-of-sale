@@ -12,13 +12,9 @@ namespace PointOfSale.Mapper
 
             CreateMap<StoreProductRequest, Product> ();
             CreateMap<Product, ProductResource> ()
-                .ForMember(dest => dest.ProductCategory, opt => opt.MapFrom(src => new ProductCategoryResource
-                    {
-                        Id = src.ProductCategory!.Id,
-                        Name = src.ProductCategory.Name
-                    })
-                );
+                .ForMember(dest => dest.ProductCategory, opt => opt.MapFrom(src => src.ProductCategory));
 
+            CreateMap<StoreProductCategory, ProductCategory> ();
             CreateMap<ProductCategory, ProductCategoryResource>();
         }
     }

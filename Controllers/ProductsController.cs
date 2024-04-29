@@ -40,10 +40,15 @@ namespace PointOfSale.Controllers
                 products = products.Where(p => p.Name.Contains(productFilterData.Name));
             }
 
-            return Ok(await products.ToListAsync());
+            await products.ToListAsync();
+
+            List<ProductResource> productResource  = _mapper.Map<List<ProductResource>>(products);
+
+            return Ok(productResource);
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> Show(int id)
         {
             var product = await _appDbContext.Products.Include(p => p.ProductCategory).FirstAsync(p => p.Id == id);
@@ -51,6 +56,7 @@ namespace PointOfSale.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Store(StoreProductRequest request)
         {
             Product product = _mapper.Map<Product>(request);
@@ -84,7 +90,7 @@ namespace PointOfSale.Controllers
 
             _appDbContext.Products.Remove(product);
             await _appDbContext.SaveChangesAsync();
-            return Ok(product);
+            return Ok(_mapper.Map<ProductResource>(product));
         }
     }
 }
