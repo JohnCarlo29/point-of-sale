@@ -16,6 +16,8 @@ builder.Services.AddControllers()
 builder.Services.AddFluentValidationAutoValidation()
     .AddFluentValidationClientsideAdapters();
 
+builder.Services.AddAutoMapper(typeof(Program));
+
 builder.Services.AddScoped<IValidator<StoreProductRequest>, StoreProductValidator>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

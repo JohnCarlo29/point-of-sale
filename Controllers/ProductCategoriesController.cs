@@ -1,4 +1,3 @@
-using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +19,7 @@ namespace PointOfSale.Controllers
         }
 
         [HttpGet]
-        [Authorize]    
+        [Authorize]
         public async Task<IActionResult> Index()
         {
 
@@ -41,8 +40,8 @@ namespace PointOfSale.Controllers
         public async Task<IActionResult> Store(ProductCategory productCategory)
         {
             await _appDbContext.ProductCategories.AddAsync(productCategory);
-            var category = await _appDbContext.SaveChangesAsync();
-            return Ok(category);
+             await _appDbContext.SaveChangesAsync();
+            return Ok(productCategory);
         }
     }
 }

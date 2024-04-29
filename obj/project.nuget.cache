@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Av2erMFXtAtLCXpegeyxUCBP6ii7CsT8qzl+pqJItXP8BxOa7i8REL8QxtmIcSsWlcOD3sHBrSsT3HYl2zCRvw==",
+  "dgSpecHash": "Pzu7bgAkeg1W7qcaWI7OLQ2dZfiNKRUctgbmvU1aLI/sNFCNZ4OBjMpMzqje0zTsxiEbN/fxITSJBXUHrtvUmQ==",
   "success": true,
   "projectFilePath": "/Users/johncarloadvincula/Documents/Projects/C#/PointOfSale/PointOfSale.csproj",
   "expectedPackageFiles": [
+    "/Users/johncarloadvincula/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/Users/johncarloadvincula/.nuget/packages/entityframework/6.4.4/entityframework.6.4.4.nupkg.sha512",
     "/Users/johncarloadvincula/.nuget/packages/fluentvalidation/11.9.1/fluentvalidation.11.9.1.nupkg.sha512",
     "/Users/johncarloadvincula/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",

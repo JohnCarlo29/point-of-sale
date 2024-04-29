@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +7,7 @@ using PointOfSale.Data;
 using PointOfSale.DataTransferObjects;
 using PointOfSale.Models;
 using PointOfSale.Request;
+using PointOfSale.Resource;
 
 namespace PointOfSale.Controllers
 {
@@ -14,10 +16,12 @@ namespace PointOfSale.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly AppDbContext _appDbContext;
+        private readonly IMapper _mapper;
 
-        public ProductsController(AppDbContext appDbContext)
+        public ProductsController(AppDbContext appDbContext, IMapper mapper)
         {
             _appDbContext = appDbContext;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -40,29 +44,22 @@ namespace PointOfSale.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize]
         public async Task<IActionResult> Show(int id)
         {
-            var product = await _appDbContext.Products.FindAsync(id);
-            return Ok(product);
+            var product = await _appDbContext.Products.Include(p => p.ProductCategory).FirstAsync(p => p.Id == id);
+            return Ok(_mapper.Map<ProductResource>(product));
         }
 
         [HttpPost]
         public async Task<IActionResult> Store(StoreProductRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            Product product = _mapper.Map<Product>(request);
 
-            await _appDbContext.Products.AddAsync(new Product{
-                Name = request.Name,
-                Price = request.Price,
-                Stock = request.Stock,
-                ProductCategoryId = request.ProductCategoryId
-            });
+            await _appDbContext.Products.AddAsync(product);
             await _appDbContext.SaveChangesAsync();
-            return Ok("success");
+
+            product.ProductCategory = await _appDbContext.ProductCategories.FirstAsync(p => p.Id == product.ProductCategoryId);
+            return Ok(_mapper.Map<ProductResource>(product));
         }
 
         [HttpPut("{id}")]
